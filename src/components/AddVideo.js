@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 
-const AddVideo = ({addVideo}) => {
+const AddVideo = ({addVideo,editableVideo,updateVideo}) => {
     let initialDataState = {
         videoTitle:"",
         videoDesc:"",
@@ -19,10 +19,23 @@ const AddVideo = ({addVideo}) => {
     const handleAdd=(e)=>{
         e.stopPropagation();
         e.preventDefault();
-        addVideo(video);
+        if(editableVideo){
+            updateVideo(video);
+            alert("Video Details are updated");
+        }
+        else{
+            addVideo(video);
+            alert("Video Details are added");
+        }
         setVideo(initialDataState);
-        alert("Video Details are added")
+        
     }
+
+    useEffect(()=>{
+        if(editableVideo)
+            setVideo(editableVideo);
+    },[editableVideo]);
+
     return (
         <form onSubmit={handleAdd}>
             <div className="mb-3">
@@ -32,7 +45,7 @@ const AddVideo = ({addVideo}) => {
                 <textarea className="form-control" name="videoDesc" rows="3" placeholder="Enter Video Description" onChange={handleInputs} value={video.videoDesc} required></textarea>
             </div>
             <div className="mb-3">
-                <button className="btn btn-primary">Add</button>
+                <button className={`btn btn-${editableVideo?'success':'primary'}`}>{editableVideo?'Edit':'Add'} Video</button>
             </div>
         </form>
     )

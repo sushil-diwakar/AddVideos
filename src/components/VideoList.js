@@ -1,10 +1,7 @@
 import React from 'react'
 
-const VideoList = ({ videos, deleteVideo }) => {
+const VideoList = ({ videos, deleteVideo, editVideo }) => {
     
-    const handleDelete=(id)=>{
-        deleteVideo(id);
-    }
     return (
         <>
             <table className="table">
@@ -14,6 +11,8 @@ const VideoList = ({ videos, deleteVideo }) => {
                         <th scope="col">videoTitle</th>
                         <th scope="col">videoDesc</th>
                         <th scope="col">videoLength</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +23,8 @@ const VideoList = ({ videos, deleteVideo }) => {
                                 <td>{x.videoTitle}</td>
                                 <td>{x.videoDesc}</td>
                                 <td>{x.videoLength}</td>
-                                <td><button className="btn btn-danger" onClick={()=>handleDelete(x)}>Delete</button></td>
+                                <td><button className="btn btn-success" onClick={()=>editVideo(x)}>Edit</button></td>
+                                <td><button className="btn btn-danger" onClick={()=>deleteVideo(x)}>Delete</button></td>
                             </tr>
                         )
 
