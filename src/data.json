@@ -10,17 +10,5 @@
         "videoTitle":"React JS tutorial",
         "videoDesc": "Will Learn different concepts of React jS",
         "videoLength": 20
-    },
-    {
-        "id":3,
-        "videoTitle":"MongoDB tutorial",
-        "videoDesc": "Will Learn different concepts of MongoDB",
-        "videoLength": 30
-    },
-    {
-        "id":4,
-        "videoTitle":"Express tutorial",
-        "videoDesc": "Will Learn different concepts of Express",
-        "videoLength": 40
     }
 ]
