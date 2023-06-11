@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 
-const AddVideo = ({addVideo,editableVideo,updateVideo}) => {
+const AddVideo = ({addVideo,editableVideo,updateVideo,mode}) => {
     let initialDataState = {
         videoTitle:"",
         videoDesc:"",
@@ -39,10 +39,10 @@ const AddVideo = ({addVideo,editableVideo,updateVideo}) => {
     return (
         <form onSubmit={handleAdd}>
             <div className="mb-3">
-                <input type="text" name="videoTitle" className="form-control" placeholder="Enter Video Title" onChange={handleInputs} value={video.videoTitle} required/>
+                <input type="text" name="videoTitle" style={{backgroundColor:`${mode==='dark'?'#635985':'white'}`, color:`${mode==='dark'?'white':'black'}`}} className="form-control" placeholder="Enter Video Title" onChange={handleInputs} value={video.videoTitle} required/>
             </div>
             <div className="mb-3">
-                <textarea className="form-control" name="videoDesc" rows="3" placeholder="Enter Video Description" onChange={handleInputs} value={video.videoDesc} required></textarea>
+                <textarea className="form-control" style={{backgroundColor:`${mode==='dark'?'#635985':'white'}`, color:`${mode==='dark'?'white':'black'}`}} name="videoDesc" rows="3" placeholder="Enter Video Description" onChange={handleInputs} value={video.videoDesc} required></textarea>
             </div>
             <div className="mb-3">
                 <button className={`btn btn-${editableVideo?'success':'primary'}`}>{editableVideo?'Edit':'Add'} Video</button>

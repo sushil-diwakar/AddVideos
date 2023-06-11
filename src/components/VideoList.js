@@ -1,10 +1,10 @@
 import React from 'react'
 
-const VideoList = ({ videos, deleteVideo, editVideo }) => {
+const VideoList = ({ videos, deleteVideo, editVideo,mode }) => {
     
     return (
         <>
-            <table className="table">
+            <table className="table" style={{color:`${mode==='dark'?'white':'black'}`}}>
                 <thead>
                     <tr>
                         <th scope="col">Id</th>

@@ -1,15 +1,31 @@
 import './App.css';
 import { useState } from 'react';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import jsonData from './data.json';
 import AddVideo from './components/AddVideo';
 import VideoList from './components/VideoList';
+import Header from './components/Header';
+import About from './components/About';
+import Contact from './components/Contact';
+
 
 
 function App() {
-  
+  const [mode,setMode] = useState('light');
   const [videos,setVideos] = useState(jsonData);
   const [editableVideo,setEditableVideo] = useState(null);
   
+    //Toggle Mode
+    const toggleMode=()=>{
+      if(mode==='light'){
+        setMode('dark')
+        document.body.style.backgroundColor="#635985";
+      }
+      else{
+        setMode('light')
+        document.body.style.backgroundColor="white";
+      }
+    }
     const addVideo=(video)=>{
         setVideos([...videos,{...video,id:videos.length+1}]);
     }
@@ -29,12 +45,21 @@ function App() {
     }
   return (
     <>
-    <h1 className="text-center">Test App</h1>
-    <div className="container">
-      <AddVideo addVideo={addVideo} editableVideo={editableVideo} updateVideo={updateVideo}/>
-      <VideoList videos={videos} deleteVideo={deleteVideo} editVideo={editVideo}/>
-    </div>
-    
+    <Router>
+      <Header title="Test App" mode={mode} toggleMode={toggleMode}/>
+      <Routes>
+          <Route exact path="/" element={
+          <>
+          <div className="container">
+          <h1 className="text-center" style={{color:`${mode==='dark'?'white':'black'}`}}>Test App</h1>
+          <AddVideo addVideo={addVideo} editableVideo={editableVideo} updateVideo={updateVideo} mode={mode}/> <VideoList videos={videos} deleteVideo={deleteVideo} editVideo={editVideo} mode={mode}/>
+          </div>
+          </>}/>
+          
+          <Route exact path="/about" element={<About mode={mode}/>}/>
+          <Route exact path="/contact" element={<Contact mode={mode}/>}/>
+      </Routes>
+    </Router>
     </>
   );
 }
