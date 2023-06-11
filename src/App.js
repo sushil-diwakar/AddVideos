@@ -6,6 +6,7 @@ import VideoList from './components/VideoList';
 
 
 function App() {
+  
   const [videos,setVideos] = useState(jsonData);
   const [editableVideo,setEditableVideo] = useState(null);
   
@@ -16,7 +17,7 @@ function App() {
       setVideos(videos.filter(x=>x!==id));
     }
     const editVideo=(id)=>{
-      setEditableVideo(videos.find(x=>x===id))
+      setEditableVideo(videos.find(x=>x===id));
     }
     
     const updateVideo=(video)=>{
@@ -24,7 +25,7 @@ function App() {
       const updatedVideoList = [...videos];
       updatedVideoList.splice(index,1,video);
       setVideos(updatedVideoList);
-      setEditableVideo(null)
+      setEditableVideo(null);
     }
   return (
     <>

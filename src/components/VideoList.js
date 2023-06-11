@@ -23,8 +23,8 @@ const VideoList = ({ videos, deleteVideo, editVideo }) => {
                                 <td>{x.videoTitle}</td>
                                 <td>{x.videoDesc}</td>
                                 <td>{x.videoLength}</td>
-                                <td><button className="btn btn-success" onClick={()=>editVideo(x)}>Edit</button></td>
-                                <td><button className="btn btn-danger" onClick={()=>deleteVideo(x)}>Delete</button></td>
+                                <td><button className="btn btn-success btn-sm" onClick={()=>editVideo(x)}>Edit</button></td>
+                                <td><button className="btn btn-danger btn-sm" onClick={()=>deleteVideo(x)}>Delete</button></td>
                             </tr>
                         )
 
