@@ -1,6 +1,10 @@
 import React from 'react'
 
-const VideoList = ({ videos }) => {
+const VideoList = ({ videos, deleteVideo }) => {
+    
+    const handleDelete=(id)=>{
+        deleteVideo(id);
+    }
     return (
         <>
             <table className="table">
@@ -20,6 +24,7 @@ const VideoList = ({ videos }) => {
                                 <td>{x.videoTitle}</td>
                                 <td>{x.videoDesc}</td>
                                 <td>{x.videoLength}</td>
+                                <td><button className="btn btn-danger" onClick={()=>handleDelete(x)}>Delete</button></td>
                             </tr>
                         )
 
